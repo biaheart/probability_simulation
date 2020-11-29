@@ -1,0 +1,31 @@
+# 带#号行表示注释
+# LineStruct Model
+
+#故障类型名，例如Linefault
+Name = LineFault
+
+#声明状态变量
+StateVarible{
+    LineState #取值为0/1
+}
+#声明观测变量
+Evidence{
+    Load #线路负载
+    Temperature #线路温度
+    Health #线路健康状态
+    I #电流
+    U #电压
+}
+
+#声明转移模型
+LineTransfer{
+    0 0.0000001 1-0.0000001
+    1 0.6   1-0.6
+}
+
+#声明传感器模型
+LineSensor{
+    P(Load|LineState)=f(Load,LineState)
+    P(Temperature|LineState)=f(Temperature,LineState)
+    P(Load|LineState)=f(Health,LineState)
+}
