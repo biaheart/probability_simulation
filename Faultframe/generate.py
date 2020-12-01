@@ -284,7 +284,7 @@ class codeGenerate:
     def calculatePGenerate(self):
         sheetName = self.Name[:-5]
         self.alter('sheetName', sheetName)
-        self.insert("func Calculate" + sheetName + "P(observation [][]float64, beliefP float64, transP float64, GaussCoefficient [][]float64,index int,faults *faultmodelstruct.Fault,common *commonStruct.Common) []float64 {\n",
+        self.insert("func Calculate" + sheetName + "P(observation [][]float64, beliefP float64, transP float64, GaussCoefficient [][]float64,index int,faults *faultmodelstruct.Fault,common *commonStruct.Common) ([]float64,[]bool) {\n",
                     "func Calculate" + sheetName+"P", '//返回某单个元件的时序故障概率', "\t//返回某单个元件的时序故障概率\n}\n\n", "baseFunction/calculateP.go")
 
 

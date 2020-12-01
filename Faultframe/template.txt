@@ -13,7 +13,7 @@ type %(className) struct {
 //className=LineFault name=linefault sheetName=Line  %slice=LineFaults
 
 func %(className)Add(xlsx *excelize.File) []faultmodelstruct.%(className){
-	%(name)Rows,_ := xlsx.GetRows("%(sheetName)")
+	%(name)Rows := xlsx.GetRows("%(sheetName)")
 	if len(%(name)Rows) == 0 {
 		return []faultmodelstruct.%(className){}
 	}
@@ -100,7 +100,8 @@ func %(sheetName)SensorModel(sensor []float64, GaussCoefficient [][]float64) [2]
 }
 
 
-func Calculate%(sheetName)P(observation [][]float64, beliefP float64, transP float64, GaussCoefficient [][]float64,index int,faults *faultmodelstruct.Fault,common *commonStruct.Common) []float64 {
+
+func Calculate%(sheetName)P(observation [][]float64, beliefP float64, transP float64, GaussCoefficient [][]float64,index int,faults *faultmodelstruct.Fault,common *commonStruct.Common) ([]float64, []bool) {
 	var faultP []float64        //存储时序故障概率
 	var posterior, priorP float64 //后验概率,先验概率
 	var t, i int
@@ -119,14 +120,18 @@ func Calculate%(sheetName)P(observation [][]float64, beliefP float64, transP flo
 		faultP = append(faultP, posterior)
 		//fmt.Println("faultP",faultP)
 	}
+	var samplingState []bool
 	for i,_:=range(faultP) {
 		q := rand.Float64()
-		if q < faultP[i]{
-			common.States[faults.%(sheetName)Faults[index].%(sheetName)State] = true
+		if q < faultP[i] {
+			// common.States[faults.TransFaults[index].TransState] = true
+			samplingState = append(samplingState, true)
+		} else {
+			samplingState = append(samplingState, false)
 		}
 	}
 	//fmt.Println("faulttransP",faultP)
-	return faultP
+	return faultP, samplingState
 	//返回某单个元件的时序故障概率
 }
 
