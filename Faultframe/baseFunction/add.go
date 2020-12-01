@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/360EntSecGroup-Skylar/excelize"
 )
+
 func Load(fp string)(*faultmodelstruct.Fault,*commonStruct.Common){
 	xlsx, err := excelize.OpenFile(fp)
 	if err != nil {
@@ -13,14 +14,15 @@ func Load(fp string)(*faultmodelstruct.Fault,*commonStruct.Common){
 		return nil, nil
 	}
 	fault := faultmodelstruct.Fault{}
-	fault.LineFaults= LineFaultAdd(xlsx)
+	fault.LineFaults = LineFaultAdd(xlsx)
 	fault.TransFaults= TransFaultAdd(xlsx)
-	//调用FaultAdd函数
 	common := commonStruct.Common{}
 	return &fault,&common
 }
+
+
 func LineFaultAdd(xlsx *excelize.File) []faultmodelstruct.LineFault{
-	linefaultRows := xlsx.GetRows("Line")
+	linefaultRows:= xlsx.GetRows("Line")
 	if len(linefaultRows) == 0 {
 		return []faultmodelstruct.LineFault{}
 	}

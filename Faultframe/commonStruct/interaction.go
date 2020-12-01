@@ -5,7 +5,6 @@ type Evidence struct{
 	U []float64	`json:"U"`
 	Load[]float64 `json:"Load"`
 	Health []float64	`json:"Health"`
-	Temperature []float64 `json:"Temperature"`
 
 }
 
@@ -15,5 +14,5 @@ type Evidence_protect struct {
 
 type Evidence_enviroment struct {
 	Health []float64	`json:"Health"`
-	Temparature []float64 `json:"Temparature"`
+	Temperature []float64 `json:"Temperature"`
 }

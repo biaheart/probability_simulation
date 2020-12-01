@@ -3,10 +3,9 @@ package faultmodelstruct
 type LineFault struct {
 	BaseFault
 
-	LineState   int32   //状态变量(索引)
+	LineState   int32
 
-	Load,Temperature,Health,I,U  int32   //观测变量(索引)
+	Load,I  int32
 
-	//%(interfaceListCode)  int32   //接口变量
-
+	//%(interfaceListCode)  int32
 }

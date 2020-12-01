@@ -10,6 +10,6 @@ type Common struct {
 	PSensor_t [][]float64 //历史概率记录
 	PTrans_t  [][]float64 //历史概率记录
 	Nx,Ny     int32       // 状态量以及观测量个数
-	faultP [] float64    //故障概率
+
 }
 

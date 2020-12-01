@@ -30,12 +30,6 @@ class codeGenerate:
         self.alter('typefaults', typefaults)
         '''
 
-    def is_decimal(num):
-        import re
-        # 以数字开头，小数点后保留1位数字或两位数字或者没有小数部分
-        dnumre = re.compile(r"""^[0-9]+(\.[0-9]{1,2})?$""")
-        result = dnumre.search(num)
-        return bool(result)
 
     def dataRead(self):
         file = open(self.file_path, 'r', encoding='utf-8')
@@ -164,7 +158,9 @@ class codeGenerate:
         f.write(s)
 
     def insert_basefault(self):
-
+        slice = self.Name + 's'
+        textt='\t'+slice +'[]'+self.Name+'\n'
+        self.insert_part("faultmodelstruct/basefault.go", textt, "//插入故障列表")
         text ='\t'+ self.Name+'Names map[string]int32\n'
         self.insert_part("faultmodelstruct/basefault.go",text,"//故障名与切片下标")
 

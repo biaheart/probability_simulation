@@ -57,7 +57,7 @@ func main() {
 
 	defer netListen.Close()
 
-	Log("Waiting for clients ...")
+	//Log("Waiting for clients ...")
 
 	//等待客户端访问
 	for{
@@ -66,7 +66,7 @@ func main() {
 			continue        //如果发生错误，继续下一个循环。
 		}
 
-		Log(conn.RemoteAddr().String(), "tcp connect success")  //tcp连接成功
+		//Log(conn.RemoteAddr().String(), "tcp connect success")  //tcp连接成功
 		go handleConnection(conn)
 	}
 }
@@ -85,7 +85,7 @@ func handleConnection(conn net.Conn) {
 
 		//返回给客户端的信息
 		strTemp := "Hello I‘m Fellow-send!"
-		//"CofoxServer got msg \""+string(buffer[:n])+"\" at "+time.Now().String()
+			//"CofoxServer got msg \""+string(buffer[:n])+"\" at "+time.Now().String()
 		conn.Write([]byte(strTemp))
 	}
 }

@@ -6,25 +6,22 @@ Name = LineFault
 
 #声明状态变量
 StateVarible{
-    LineState #取值为0/1
+    LineState
 }
 #声明观测变量
 Evidence{
-    Load #线路负载
-    Temperature #线路温度
-    Health #线路健康状态
-    I #电流
-    U #电压
+    Load
+    I
 }
 
 #声明转移模型
-LineTransfer{
-    0 0.0000001 1-0.0000001
-    1 0.6   1-0.6
+Transfer{
+    0.85 0.15
+    0.2   0.8
 }
 
 #声明传感器模型
-LineSensor{
+Sensor{
     P(Load|LineState)=f(Load,LineState)
     P(Temperature|LineState)=f(Temperature,LineState)
     P(Load|LineState)=f(Health,LineState)

@@ -12,7 +12,7 @@ func TestSimulateFault(t *testing.T) {
 	baseFunction.Index(fault,common)
 	baseFunction.Initial(fault,common)
 	evidence := &commonStruct.Evidence{}
-
+    environment :=&commonStruct.Evidence_enviroment{}
 	var time = 10.0
-	SimulateFault(fault,common,evidence,time)
+	SimulateFault(fault,common,evidence,environment,time)
 }

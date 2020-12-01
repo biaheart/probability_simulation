@@ -11,8 +11,7 @@ type BaseFault struct {
 type Fault struct{
 	LineFaults []LineFault //线路故障列表，列表中每个结构体用于对应线路的故障仿真
 	TransFaults []TransFault
-	LineFaultNames map[string]int32
+	LineFaultNames map[string]int32 //线路名与切片下标
 	TransFaultNames map[string]int32
-	//线路名与切片下标
 
 }

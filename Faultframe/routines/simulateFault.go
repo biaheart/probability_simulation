@@ -7,7 +7,7 @@ import (
 	"fmt"
 )
 
-func SimulateFault(fault *faultmodelstruct.Fault,common *commonStruct.Common,evidence *commonStruct.Evidence,time float64){
+func SimulateFault(fault *faultmodelstruct.Fault,common *commonStruct.Common,evidence *commonStruct.Evidence,envoronment *commonStruct.Evidence_enviroment,time float64){
 
 	for t:=float64(1) ;t<=time;{
 		//TODO:插入socket通信的代码，获取一次系统的仿真数据，更新观测量

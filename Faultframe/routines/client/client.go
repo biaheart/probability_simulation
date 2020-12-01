@@ -68,8 +68,7 @@ func Log(v ...interface{}) {
 }
 
 func main() {
-	//server := "127.0.0.1:1024"
-	server := "172.28.43.161:1024"
+	server := "127.0.0.1:1024"
 	tcpAddr, err := net.ResolveTCPAddr("tcp4", server)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Fatal error: %s", err.Error())

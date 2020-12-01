@@ -3,12 +3,11 @@ package faultmodelstruct
 type %(className) struct {
 	BaseFault
 
-	%(LineState)   int32   //状态变量(索引)
+	%(LineState)   int32
 
-	%(Evidence_list)  int32   //观测变量(索引)
+	%(Evidence_list)  int32
 
-	%(interfaceListCode)  int32   //接口变量
-
+	//%(interfaceListCode)  int32
 }
 
 //className=LineFault name=linefault sheetName=Line  %slice=LineFaults

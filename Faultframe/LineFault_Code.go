@@ -3,12 +3,11 @@ package faultmodelstruct
 type LineFault struct {
 	BaseFault
 
-	LineState   int32   //状态变量(索引)
+	LineState   int32
 
-	Load,Temperature,Health,I,U  int32   //观测变量(索引)
+	Load,I  int32
 
-	%(interfaceListCode)  int32   //接口变量
-
+	//%(interfaceListCode)  int32
 }
 
 //className=LineFault name=linefault sheetName=Line  %slice=LineFaults
@@ -55,11 +54,8 @@ func LineFaultIndex(fault *faultmodelstruct.Fault,common *commonStruct.Common){
 
 		//状态变量索引映射
 		linefault.Load = common.Ny
-		linefault.Temperature = common.Ny + 1
-		linefault.Health = common.Ny + 2
-		linefault.I = common.Ny + 3
-		linefault.U = common.Ny + 4
-		common.Ny += 5
+		linefault.I = common.Ny + 1
+		common.Ny += 2
 
 		//观测变量映射
 	}
@@ -74,10 +70,7 @@ func SetLineEvidence(fault *faultmodelstruct.Fault,common *commonStruct.Common){
 	for i, _ := range(linefaults){
 
 		common.Evidences[linefaults[i].Load] = evidence.Load
-		common.Evidences[linefaults[i].Temperature] = evidence.Temperature
-		common.Evidences[linefaults[i].Health] = evidence.Health
 		common.Evidences[linefaults[i].I] = evidence.I
-		common.Evidences[linefaults[i].U] = evidence.U
 
         //给观测变量序列赋值
 	}
