@@ -13,6 +13,8 @@ type Fault struct{
 	TransFaults []TransFault
 
 
+	LineFaultNames map[string]int32
+	TransFaultNames map[string]int32
     //故障名与切片下标
 }
 
