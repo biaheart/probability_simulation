@@ -63,6 +63,7 @@ func handleClient(conn net.Conn) {
 		for j := 0; j < len(tempJSON); j++ {
 			if tempJSON[j] == 36 {
 				//读取到截止符，执行断开连接的操作
+				conn.Close()
 			} else if tempJSON[j] == 35 {
 				// 读取到分隔符
 				// 执行数据处理
