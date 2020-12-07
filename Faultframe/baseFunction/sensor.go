@@ -80,3 +80,29 @@ func gauss(X float64, meanValue float64, variance float64) float64 {
 
 
 
+func LineSensorModel(sensor []float64, GaussCoefficient [][]float64) [2]float64 {
+	if len(sensor) != len(GaussCoefficient) {
+		panic("观测量数量和概率分布系数数量不对应")
+	}
+	var sensorP = [2]float64{1, 0}
+	for i, element := range sensor {
+		sensorP[0] *= gauss(element, GaussCoefficient[i][0], GaussCoefficient[i][1])
+	}
+	sensorP[1] = 1 - sensorP[0] //这里粗暴地得到两个不同状态量条件下的获得对应观测量的概率，有待修改
+	return sensorP
+	//计算传感器模型概率
+}
+
+func TransSensorModel(sensor []float64, GaussCoefficient [][]float64) [2]float64 {
+	if len(sensor) != len(GaussCoefficient) {
+		panic("观测量数量和概率分布系数数量不对应")
+	}
+	var sensorP = [2]float64{1, 0}
+	for i, element := range sensor {
+		sensorP[0] *= gauss(element, GaussCoefficient[i][0], GaussCoefficient[i][1])
+	}
+	sensorP[1] = 1 - sensorP[0] //这里粗暴地得到两个不同状态量条件下的获得对应观测量的概率，有待修改
+	return sensorP
+	//计算传感器模型概率
+}
+
